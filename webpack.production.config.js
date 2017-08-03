@@ -6,7 +6,7 @@ var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     devtool:'hidden-source-map',
     entry:{
-        main:__dirname + '/app/main.js',
+        main:__dirname + '/entry/main.js',
         vendor:'moment'
     },
     output:{
@@ -22,7 +22,7 @@ module.exports = {
                 exclude:/node_modules/,
                 loader:'babel-loader',
                 query:{
-                    presets:['es2015','stage-0']
+                    presets:['react','es2015','stage-0']
                 }
             },
             {

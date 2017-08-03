@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     devtool:'cheap-module-eval-source-map',
     entry:{
-        main:__dirname + '/app/main.js',
+        main:__dirname + '/entry/main.js',
         vendor:'moment'
     },
     output:{
@@ -22,19 +22,23 @@ module.exports = {
         openPage:''
     },
     module:{
-        loaders:[
+        rules:[
             {
                 test:/\.js$/,
                 exclude:/node_modules/,
-                loader:'babel-loader',
-                query:{
-                    presets:['es2015','stage-0']
-                }
+                use: [{
+                    loader: 'babel-loader',
+                    options: {presets:['react','es2015','stage-0'] }
+                }]
             },
             {
                 test:/\.less$/,
                 exclude:/node_modules/,
-                loader:'style-loader!css-loader!less-loader'
+                use:[
+                    "style-loader",
+                    "css-loader",
+                    "less-loader",
+                ]
             }
         ]
     },
