@@ -4,15 +4,15 @@
 import React from 'react';
 import { BrowserRouter as Router,Route } from 'react-router-dom'
 
-import Demo from '../src/components/Demo';
-import Test from '../src/components/Test';
+import Demo from '../components/Demo';
+import Test from '../components/Test';
 
 
 export default (
     <Router>
         <div>
-            <Route path="/" component={Demo} />
-            <Route path="/test" component={Test} />
+            <Route exact path="/" component={Demo} />
+            <Route exact path="/:id" component={Test} />
         </div>
     </Router>
 )

@@ -1,23 +1,25 @@
 var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var path = require('path');
 
 module.exports = {
     devtool:'cheap-module-eval-source-map',
     entry:{
         main:__dirname + '/entry/main.js',
-        vendor:'moment'
+        vendor:["react", "react-dom", "react-router","react-router-dom"]
     },
     output:{
-        path:__dirname + '/build',
-        filename:'[name].[id].js',
-        publicPath:'/build/'
+        path: path.resolve(__dirname, 'build'),
+        filename:'[name].js',
+        publicPath:'./'
     },
     devServer:{
+        contentBase: path.join(__dirname, "/"),
         inline:true,
         hot:true,
         port:8080,
+        publicPath: '/',
         open:true,
         openPage:''
     },

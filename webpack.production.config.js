@@ -2,15 +2,16 @@ var webpack = require('webpack');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var path = require('path');
 
 module.exports = {
     devtool:'hidden-source-map',
     entry:{
         main:__dirname + '/entry/main.js',
-        vendor:'moment'
+        vendor:["react", "react-dom", "react-router","react-router-dom"]
     },
     output:{
-        path:__dirname + '/build',
+        path:path.resolve(__dirname, 'build'),
         filename:'[name].[hash].js',
         publicPath:'./'
     },
@@ -57,6 +58,11 @@ module.exports = {
             output:{
                 comments:false
             }
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
     ]
 }

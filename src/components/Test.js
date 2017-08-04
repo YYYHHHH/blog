@@ -7,7 +7,7 @@ import React from 'react';
 class Demo extends React.Component{
     render(){
         return(
-            <div>1211231</div>
+            <div>{this.props.match.params.id}</div>
         )
     }
 }

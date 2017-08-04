@@ -1,19 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
+import Routes from '../src/router/routes';
 
 import './main.less';
 
-
-class Demo extends React.Component{
-    render(){
-        return(
-            <div>645sfs</div>
-        )
-    }
-}
 ReactDOM.render(
-    <Demo/>,
+    <div>{Routes}</div>,
     document.getElementById('container')
 );
