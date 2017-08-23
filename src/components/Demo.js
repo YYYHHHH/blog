@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom'
 class Demo extends React.Component{
     render(){
         return(
-            <Link to="/test">644552sfs</Link>
+            <div>
+                <Link to="/home">home</Link><br/>
+                <Link to="/test/aa">test</Link>
+            </div>
         )
     }
 }
