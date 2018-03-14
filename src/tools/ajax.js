@@ -4,7 +4,7 @@
 import axios from 'axios';
 
 const http = {
-    handelResponse(res) {
+    handelError(res) {
         if(res.response){
             if(res.response.status === 500){
                 this.showError('服务器返回异常');
@@ -23,9 +23,9 @@ const http = {
         return new Promise((resolve,reject)=>{
             axios(params).then((res)=>{
                 resolve(res.data)
-            },(res)=>{
+            }).catch((res)=>{
                 reject(res);
-                this.handelResponse(res);
+                this.handelError(res);
             })
         })
     }

@@ -23,7 +23,7 @@ class Demo extends React.Component{
         };
         http.ajax(params).then(res=>{
             console.log(res)
-        },(err)=>{
+        }).catch((err)=>{
             console.log(err)
         })
     }
@@ -31,7 +31,8 @@ class Demo extends React.Component{
         console.log(this.props.test)
         return(
             <div>
-                <button onClick={()=>{this.handleClick1()}}>增加文本</button>
+                <button onClick={()=>{this.handleClick()}}>增加文本</button>
+                <button onClick={()=>{this.handleClick1()}}>获取数据</button>
                 <div>
                     { this.props.test.list.map((item, index) => {
                         return <span className="result" key={index}>{item}</span>;
