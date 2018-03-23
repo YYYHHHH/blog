@@ -6,7 +6,7 @@ var path = require('path');
 module.exports = {
     devtool:'cheap-module-eval-source-map',
     entry:{
-        main:__dirname + '/entry/main.js',
+        main:__dirname + '/src/entry/main.js',
         vendor:["react", "react-dom", "react-router","react-router-dom"]
     },
     output:{

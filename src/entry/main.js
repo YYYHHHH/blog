@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import store from '../src/redux/store'
-import Routes from '../src/router/routes';
+import store from '../redux/store/index'
+import Routes from '../router/routes';
 
 import './main.less';
 
