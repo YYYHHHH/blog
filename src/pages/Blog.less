@@ -1,0 +1,28 @@
+.Blog{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .BlogContent{
+    width:60%;
+    height: 80%;
+    overflow-y: scroll;
+    border:1px solid #ddd;
+    box-shadow: 0 10px 10px #ccc;
+    .BlogContentItem{
+      padding:15px 20px;
+      border:1px solid #ddd;
+      border-top: none;
+      cursor:pointer;
+      &:hover{
+        background: #eee;
+      }
+      a{
+        display: block;
+        font-size: 18px;
+        color:deepskyblue;
+        text-decoration: none;
+      }
+    }
+  }
+}

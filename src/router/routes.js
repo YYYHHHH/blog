@@ -8,6 +8,10 @@ import Demo from '../components/Demo';
 import Test from '../components/Test';
 
 import Index from '../pages/Index';
+import Blog from '../pages/Blog';
+import Article from '../pages/Article';
+import Message from '../pages/Message';
+import About from '../pages/About';
 
 import NotFount from '../components/NotFount';
 
@@ -18,8 +22,11 @@ export default (
             <Route path="/test/:id" component={Test}/>
             <Route path="/demo" render={()=><Demo />}/>
 
-            <Route exact path="/" render={()=><Index />}  />
-
+            <Route exact path="/" component={Index} />
+            <Route path="/blog" component={Blog} />
+            <Route path="/article/:id" component={Article} />
+            <Route path="/message" component={Message} />
+            <Route path="/about" component={About} />
 
             <Route component={NotFount}/>
         </Switch>
