@@ -24,7 +24,7 @@ class Index extends React.Component {
             <div className='Index'>
                 <ul>
                     <li><Link to="/">首页</Link></li>
-                    <li><Link to="/blog">博文</Link></li>
+                    <li><Link to="/blog">文章</Link></li>
                     <li><Link to="/message">留言</Link></li>
                     <li><Link to="/about">关于</Link></li>
                 </ul>

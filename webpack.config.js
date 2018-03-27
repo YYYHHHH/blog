@@ -12,7 +12,7 @@ module.exports = {
     output:{
         path: path.resolve(__dirname, 'build'),
         filename:'[name].js',
-        publicPath:'./'
+        publicPath:'/'
     },
     devServer:{
         contentBase: path.join(__dirname, "/"),
