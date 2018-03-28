@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
+import Comment from '../components/comment/Comment.js'
 
 import './Article.less';
 
@@ -51,7 +52,11 @@ class Article extends React.Component {
 
 
                 </div>
+                <div>
+                    <Comment/>
+                </div>
             </div>
+
         );
     }
 }
