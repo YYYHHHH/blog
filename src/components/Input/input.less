@@ -1,0 +1,41 @@
+.textarea{
+  width:300px;
+  height: 150px;
+  padding:4px 8px;
+  resize: none;
+  line-height: 1.5;
+  transition: all .3s linear 0s;
+  &:hover{
+    border-color: #434343;
+  }
+  &:focus{
+    border-color: deepskyblue;
+  }
+  /*滚动条样式*/
+  &::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+  }
+  &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.2);
+  }
+  &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+  }
+
+}
+.text{
+  padding:4px;
+  outline: none;
+  border-width:1px;
+  transition: all .2s linear 0s;
+  &:hover{
+    border: 1px solid #434343;
+  }
+  &:focus{
+    border: 1px solid deepskyblue;
+  }
+}

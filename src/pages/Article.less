@@ -1,11 +1,7 @@
 .Article{
   margin:8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  padding:0 20%;
   .ArticleContent{
-    width:60%;
     padding:2% 8%;
     border:1px solid #ddd;
     h2{
@@ -28,9 +24,48 @@
       line-height: 1.8;
     }
   }
-  @media screen and (max-device-width :480px) {
-    .ArticleContent {
-      width:90%;
+  .advertise{
+    margin:30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+      width:100%
     }
+  }
+  .replyTitle{
+    padding:10px 0;
+    margin: 20px 0;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    .replySum{
+      font-size: 20px;
+    }
+    .replyMethod{
+      .iconfont{
+        font-size: 14px;
+        color:#fd4c5b;
+        cursor:pointer;
+      }
+      .icon-8{
+        margin-right: 25px;
+      }
+    }
+  }
+  .eidtorBox{
+    margin: 50px 0;
+    .reply{
+      border-left: 8px solid #fd4c5b;
+      padding-left:5px;
+    }
+    .username{
+      margin:20px
+    }
+  }
+}
+@media screen and (max-device-width :480px) {
+  .Article {
+    padding:0 5%;
   }
 }

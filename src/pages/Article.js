@@ -5,6 +5,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Comment from '../components/comment/Comment.js'
+import Eidtor from '../components/eidtor/Eidtor.js'
 
 import './Article.less';
 
@@ -53,7 +54,22 @@ class Article extends React.Component {
 
                 </div>
                 <div>
+                    <div className="advertise"><img src="../../static/imgs/ad.jpg" alt="广告"/></div>
+                    <div className="replyTitle">
+                        <span className="replySum">51条评论</span>
+                        <span className="replyMethod">
+                            <i className="iconfont icon-8">刷新评论</i>
+                            <i className="iconfont icon-speechbubble">我要评论</i>
+                        </span>
+                    </div>
+                    <Comment components={<Comment border components={<Comment border />}/>}/>
                     <Comment/>
+                    <Comment/>
+                    <div className="eidtorBox">
+                        <div className="reply">发表评论</div>
+                        <div className="username">ID:我不听我不听我不听我不听 </div>
+                        <Eidtor/>
+                    </div>
                 </div>
             </div>
 
