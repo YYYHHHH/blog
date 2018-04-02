@@ -12,6 +12,7 @@ import Blog from '../pages/Blog';
 import Article from '../pages/Article';
 import Message from '../pages/Message';
 import About from '../pages/About';
+import Writer from '../pages/Writer';
 
 import NotFount from '../components/NotFount';
 
@@ -27,6 +28,7 @@ export default (
             <Route path="/article/:id" component={Article} />
             <Route path="/message" component={Message} />
             <Route path="/about" component={About} />
+            <Route path="/writer" component={Writer} />
 
             <Route component={NotFount}/>
         </Switch>

@@ -5,7 +5,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Comment from '../components/comment/Comment.js'
-import Eidtor from '../components/eidtor/Eidtor.js'
+import Reply from '../components/reply/Reply.js'
 
 import './Article.less';
 
@@ -68,7 +68,7 @@ class Article extends React.Component {
                     <div className="eidtorBox">
                         <div className="reply">发表评论</div>
                         <div className="username">ID:我不听我不听我不听我不听 </div>
-                        <Eidtor/>
+                        <Reply/>
                     </div>
                 </div>
             </div>

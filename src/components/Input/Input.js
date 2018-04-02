@@ -3,25 +3,34 @@
  */
 import React from 'react';
 
-import './input.less';
+import './Input.less';
 
-export class Input extends React.Component{
+export default class Input extends React.Component{
     constructor(){
         super();
 
     }
     render(){
-        let _Input;
+        let _Input,props = {};
         switch(this.props.type){
             case('textarea'):
-                _Input = <textarea
-                    {...this.props}
-                    className="textarea"/>;
+                for(let i in this.props){
+                    if(i !== 'className'){
+                        props[i] = this.props[i]
+
+                    }
+                }
+                props.className = this.props.className?`${ this.props.className } Input-textarea`:'Input-textarea';
+                _Input = <textarea {...props}/>;
                 break;
             default:
-                _Input = <input
-                    {...this.props}
-                    className="text"/>;
+                for(let i in this.props){
+                    if(i !== 'className'){
+                        props[i] = this.props[i]
+                    }
+                }
+                props.className = this.props.className?`${ this.props.className } Input-text`:'Input-text';
+                _Input = <input {...props}/>;
         }
         return(
             _Input

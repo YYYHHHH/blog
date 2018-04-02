@@ -1,15 +1,18 @@
-.textarea{
+.Input-textarea{
   width:300px;
   height: 150px;
   padding:4px 8px;
   resize: none;
-  line-height: 1.5;
-  transition: all .3s linear 0s;
+  line-height: 1.8;
+  border:1px solid #aaa;
+  outline:none;
+  box-sizing: border-box;
+  transition: all .2s linear 0s;
   &:hover{
-    border-color: #434343;
+    border: 1px solid #434343;
   }
   &:focus{
-    border-color: deepskyblue;
+    border: 1px solid deepskyblue;
   }
   /*滚动条样式*/
   &::-webkit-scrollbar {/*滚动条整体样式*/
@@ -27,10 +30,11 @@
   }
 
 }
-.text{
+.Input-text{
   padding:4px;
   outline: none;
-  border-width:1px;
+  box-sizing: border-box;
+  border:1px solid #aaa;
   transition: all .2s linear 0s;
   &:hover{
     border: 1px solid #434343;

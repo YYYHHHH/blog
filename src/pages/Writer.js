@@ -1,15 +1,15 @@
 /**
- * Created by b on 2018/3/30.
+ * Created by b on 2018/4/2.
  */
 
 import React from 'react';
 import {connect} from 'react-redux';
-import { Input } from '../Input/Input';
-
-import './Eidtor.less';
 
 
-class Eidtor extends React.Component {
+import './Writer.less';
+
+
+class Writer extends React.Component {
     constructor() {
         super();
         this.state = {};
@@ -21,8 +21,8 @@ class Eidtor extends React.Component {
 
     render() {
         return (
-            <div className='Eidtor'>
-                <Input type="textarea" />
+            <div className='Writer'>
+                Writer
             </div>
         );
     }
@@ -30,5 +30,5 @@ class Eidtor extends React.Component {
 
 export default connect((state) => {
     return {};
-})(Eidtor);
+})(Writer);
 
