@@ -1,0 +1,56 @@
+.ArticleList{
+  height: 100%;
+  overflow-y: scroll;
+  /*滚动条样式*/
+  &::-webkit-scrollbar {/*滚动条整体样式*/
+    width: 8px;     /*高宽分别对应横竖滚动条的尺寸*/
+  }
+  &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(67, 255, 106, 0.4);
+  }
+  &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0;
+    background: rgba(0,0,0,0.1);
+  }
+  .newArticle{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    cursor:pointer;
+    i{
+      font-size: 22px;
+    }
+  }
+  .article{
+    padding-top: 10px;
+    border-bottom: 1px solid #ddd;
+    border-left: 8px solid white;
+    padding-left: 5px;
+    cursor:pointer;
+    &:hover{
+      background: #e6e6e6;
+      border-left: 8px solid #fd4c5b;
+    }
+    .title{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .time{
+      font-size: 13px;
+    }
+    .method{
+      margin:10px 0;
+      overflow: hidden;
+      Button{
+        float: right;
+        margin:0 5px;
+      }
+    }
+  }
+}

@@ -4,7 +4,8 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-
+import ArticleList from '../components/ArticleList/ArticleList';
+import Editor from '../components/Editor/Editor';
 
 import './Writer.less';
 
@@ -22,7 +23,12 @@ class Writer extends React.Component {
     render() {
         return (
             <div className='Writer'>
-                Writer
+                <div className="WriterL">
+                    <ArticleList/>
+                </div>
+                <div className="WriterR">
+                    <Editor/>
+                </div>
             </div>
         );
     }
