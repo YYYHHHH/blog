@@ -31,9 +31,9 @@ class ArticalList extends React.Component {
                         2018-04-04 17:54
                     </div>
                     <div className="method">
-                        <Button>删除</Button>
-                        <Button type="secondary">置顶</Button>
-                        <Button type="primary">设为私密</Button>
+                        <Button><i className="iconfont icon-delete"> </i>删除</Button>
+                        <Button type="secondary"><i className="iconfont icon-top"> </i>置顶</Button>
+                        <Button type="primary"><i className="iconfont icon-cc-lock"> </i>设为私密</Button>
                     </div>
                 </div>
             )
@@ -46,6 +46,9 @@ class ArticalList extends React.Component {
                     <span>写文章</span>
                 </div>
                 {list}
+                <div className='newArticle'>
+                    <span>已经到底啦！</span>
+                </div>
             </div>
         );
     }

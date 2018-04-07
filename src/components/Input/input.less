@@ -1,3 +1,4 @@
+@import "../../../static/css/base.less";
 .Input-textarea{
   width:300px;
   height: 150px;
@@ -12,7 +13,7 @@
     border: 1px solid #434343;
   }
   &:focus{
-    border: 1px solid deepskyblue;
+    border: 1px solid @blueDefault;
   }
   /*滚动条样式*/
   &::-webkit-scrollbar {/*滚动条整体样式*/
@@ -40,6 +41,6 @@
     border: 1px solid #434343;
   }
   &:focus{
-    border: 1px solid deepskyblue;
+    border: 1px solid @blueDefault;
   }
 }

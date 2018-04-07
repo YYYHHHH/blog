@@ -1,0 +1,41 @@
+.Editor{
+  height: 100%;
+  .title{
+    height: 60px;
+    input{
+      height: 100%;
+      width:100%;
+      border:none;
+      padding-left:40px;
+      font-size: 26px;
+    }
+  }
+  .toolbar{
+    display: flex;
+    justify-content: space-between;
+    padding:0 40px;
+    align-items: center;
+    height: 40px;
+    background: #e6e6e6;
+    .toolbarL{
+      i{
+        margin-right: 20px;
+        cursor:pointer;
+      }
+    }
+    .toolbarR{
+      cursor:pointer;
+      span{
+        font-size: 13px;
+      }
+    }
+  }
+  .editorInput{
+    height:calc(~'100% - 104px');
+    width:100%;
+    border:none;
+    padding:40px;
+    font-size: 18px;
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  }
+}

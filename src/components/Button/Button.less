@@ -1,3 +1,4 @@
+@import "../../../static/css/base.less";
 .btn{
   margin:0;
   height: 28px;
@@ -19,21 +20,21 @@
   box-sizing: border-box;
 }
 .Button-primary{
-  background: #3089dc;
+  background: @blueDefault;
   border:1px solid transparent;
   color:white;
   &:hover{
-    background: #1170bc;
+    background: @blueDeep;
     text-decoration: none;
   }
 }
 .Button-secondary{
   background: #e4f0fd;
-  border:1px solid #3089dc;
-  color:#3089dc;
+  border:1px solid @blueDefault;
+  color:@blueDefault;
   &:hover{
     color:white;
-    background: #3089dc;
+    background: @blueDefault;
     text-decoration: none;
   }
 }

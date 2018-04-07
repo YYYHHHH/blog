@@ -15,9 +15,10 @@ export default class Input extends React.Component{
         switch(this.props.type){
             case('textarea'):
                 for(let i in this.props){
-                    if(i !== 'className'){
+                    if(i === 'onChange'){
+                        props[i] = (e)=>this.props.onChange(e.target.value);
+                    }else if(i !== 'className'){
                         props[i] = this.props[i]
-
                     }
                 }
                 props.className = this.props.className?`${ this.props.className } Input-textarea`:'Input-textarea';
@@ -25,7 +26,9 @@ export default class Input extends React.Component{
                 break;
             default:
                 for(let i in this.props){
-                    if(i !== 'className'){
+                    if(i === 'onChange'){
+                        props[i] = (e)=>this.props.onChange(e.target.value);
+                    }else if(i !== 'className'){
                         props[i] = this.props[i]
                     }
                 }

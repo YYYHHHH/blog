@@ -1,3 +1,4 @@
+@import "../../static/css/base.less";
 .Article{
   margin:8px;
   padding:0 20%;
@@ -45,7 +46,7 @@
     .replyMethod{
       .iconfont{
         font-size: 14px;
-        color:#fd4c5b;
+        color:@red;
         cursor:pointer;
       }
       .icon-8{
@@ -56,7 +57,7 @@
   .eidtorBox{
     margin: 50px 0;
     .reply{
-      border-left: 8px solid #fd4c5b;
+      border-left: 8px solid @red;
       padding-left:5px;
     }
     .username{
