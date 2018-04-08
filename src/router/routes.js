@@ -13,6 +13,7 @@ import Article from '../pages/Article';
 import Message from '../pages/Message';
 import About from '../pages/About';
 import Writer from '../pages/Writer';
+import Preview from '../pages/Preview';
 
 import NotFount from '../components/NotFount';
 
@@ -29,6 +30,7 @@ export default (
             <Route path="/message" component={Message} />
             <Route path="/about" component={About} />
             <Route path="/writer" component={Writer} />
+            <Route path="/preview" component={Preview} />
 
             <Route component={NotFount}/>
         </Switch>

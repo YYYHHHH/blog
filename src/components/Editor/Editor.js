@@ -4,7 +4,9 @@
 
 import React from 'react';
 import {connect} from 'react-redux';
-import Markdown from 'react-markdown';
+import { Link } from 'react-router-dom';
+import * as actions from '../../redux/actions/article';
+
 import Input from '../Input/Input';
 
 import './editor.less'
@@ -23,17 +25,36 @@ class Editor extends React.Component {
             [name]:value
         })
     }
+    editTitle(value){
+        let { article } = this.props;
+        let obj = {
+            title:value,
+            content:article.content
+        };
+        this.props.dispatch(actions.editArticle(obj));
+    }
+    editArticle(value){
+        let { article } = this.props;
+        let obj = {
+            title:article.title,
+            content:value
+        };
+        this.props.dispatch(actions.editArticle(obj));
+    }
 
     render() {
+        let { article } = this.props;
         return (
             <div className='Editor'>
                 <div className='title'>
-                    <Input defaultValue='react中父组件的操作触发的react中父组件的操作触发的函数需要用到子组件内的数据作为参数函数需要用到子组件内的数据作为参数'/>
+                    <Input
+                        value={article.title}
+                        onChange={(value)=>{this.editTitle(value)}}/>
                 </div>
                 <div className='toolbar'>
                     <span className='toolbarL'>
                         <i className='iconfont icon-save'> </i>
-                        <i className='iconfont icon-book'> </i>
+                        <Link to="/preview"><i className='iconfont icon-book'> </i></Link>
                     </span>
                     <span className='toolbarR'>
                         <i className='iconfont icon-up_right'> </i>
@@ -41,17 +62,18 @@ class Editor extends React.Component {
                     </span>
                 </div>
                 <Input
-                    value={this.state.content}
-                    onChange={(value)=>this.setValue('content',value)}
+                    value={article.content}
+                    onChange={(value)=>this.editArticle(value)}
                     type='textarea'
                     className='editorInput'/>
-                <Markdown source={this.state.content}/>
             </div>
         );
     }
 }
 
 export default connect((state) => {
-    return {};
+    return {
+        article: state.article
+    };
 })(Editor);
 
