@@ -6,6 +6,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../../redux/actions/article';
+import http from '../../tools/ajax';
 
 import Input from '../Input/Input';
 
@@ -41,6 +42,23 @@ class Editor extends React.Component {
         };
         this.props.dispatch(actions.editArticle(obj));
     }
+    report = ()=>{
+        let { article } = this.props;
+        let params = {
+            method: 'post',
+            url: '/article/report',
+            data: {
+                title:article.title,
+                content:article.content,
+                secret:0
+            },
+        };
+        http.ajax(params).then(res=>{
+            console.log(res)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    };
 
     render() {
         let { article } = this.props;
@@ -56,7 +74,7 @@ class Editor extends React.Component {
                         <i className='iconfont icon-save'> </i>
                         <Link to="/preview"><i className='iconfont icon-book'> </i></Link>
                     </span>
-                    <span className='toolbarR'>
+                    <span className='toolbarR' onClick={this.report}>
                         <i className='iconfont icon-up_right'> </i>
                         <span>发表文章</span>
                     </span>

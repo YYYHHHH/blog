@@ -19,7 +19,7 @@ const http = {
         console.log(msg);
     },
     ajax(params) {
-        params.headers = {'Content-Type': 'application/x-www-form-urlencoded'};
+        params.headers = {'Content-Type': 'application/json'};
         return new Promise((resolve,reject)=>{
             axios(params).then((res)=>{
                 resolve(res.data)
