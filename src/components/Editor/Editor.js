@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as actions from '../../redux/actions/article';
 import http from '../../tools/ajax';
+import HOST from '../../tools/constant';
 
 import Input from '../Input/Input';
 
@@ -46,7 +47,7 @@ class Editor extends React.Component {
         let { article } = this.props;
         let params = {
             method: 'post',
-            url: '/article/report',
+            url: HOST+'/article/report',
             data: {
                 title:article.title,
                 content:article.content,
@@ -66,6 +67,7 @@ class Editor extends React.Component {
             <div className='Editor'>
                 <div className='title'>
                     <Input
+                        placeholder="请输入标题..."
                         value={article.title}
                         onChange={(value)=>{this.editTitle(value)}}/>
                 </div>
@@ -80,6 +82,7 @@ class Editor extends React.Component {
                     </span>
                 </div>
                 <Input
+                    placeholder="请输入内容..."
                     value={article.content}
                     onChange={(value)=>this.editArticle(value)}
                     type='textarea'
