@@ -43,21 +43,32 @@ class Editor extends React.Component {
         };
         this.props.dispatch(actions.editArticle(obj));
     }
-    report = ()=>{
-        let { article } = this.props;
+    //onEditId来区分是新增还是编辑，edit来区分是否公开
+    report(edit){
+        let { article,onEditId } = this.props;
         let params = {
             method: 'post',
-            url: HOST+'/article/report',
+            url: onEditId?HOST+'/article/edit':HOST+'/article/report',
             data: {
                 title:article.title,
-                content:article.content,
-                secret:0
+                content:article.content
             },
         };
+        if(onEditId){
+            params.data.art_id = onEditId
+        }
+        if(edit){
+            params.data.secret = 1
+        }else{
+            params.data.secret = 0
+        }
         http.ajax(params).then(res=>{
-            console.log(res)
+            if(res.success){
+                alert(res.msg);
+                this.props.getArticleList()
+            }
         }).catch((err)=>{
-            console.log(err)
+            alert('error',err)
         })
     };
 
@@ -73,10 +84,10 @@ class Editor extends React.Component {
                 </div>
                 <div className='toolbar'>
                     <span className='toolbarL'>
-                        <i className='iconfont icon-save'> </i>
+                        <i className='iconfont icon-save' onClick={()=>this.report('edit')}> </i>
                         <Link to="/preview"><i className='iconfont icon-book'> </i></Link>
                     </span>
-                    <span className='toolbarR' onClick={this.report}>
+                    <span className='toolbarR' onClick={()=>this.report()}>
                         <i className='iconfont icon-up_right'> </i>
                         <span>发表文章</span>
                     </span>
