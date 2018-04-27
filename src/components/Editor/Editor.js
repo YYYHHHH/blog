@@ -64,8 +64,12 @@ class Editor extends React.Component {
         }
         http.ajax(params).then(res=>{
             if(res.success){
-                alert(res.msg);
-                this.props.getArticleList()
+                this.props.getArticleList();
+                if(edit){
+                    alert('保存成功！')
+                }else{
+                    alert('发表成功！')
+                }
             }
         }).catch((err)=>{
             alert('error',err)
@@ -105,7 +109,8 @@ class Editor extends React.Component {
 
 export default connect((state) => {
     return {
-        article: state.article
+        article: state.article,
+        onEditId: state.onEditId
     };
 })(Editor);
 

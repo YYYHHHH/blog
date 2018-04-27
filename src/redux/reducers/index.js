@@ -6,6 +6,7 @@
 import { combineReducers } from 'redux';
 import test from './test';
 import article from './article';
+import onEditId from './onEditId';
 
 
 import { routerReducer } from 'react-router-redux';
@@ -15,6 +16,7 @@ import { routerReducer } from 'react-router-redux';
 const rootReducer = combineReducers({
     test,
     article,
+    onEditId,
     routing: routerReducer,
 });
 

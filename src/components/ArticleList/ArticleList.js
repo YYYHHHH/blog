@@ -16,19 +16,40 @@ import * as actions from "../../redux/actions/article";
 class ArticalList extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            pageIndex:1
+        };
     }
 
     componentDidMount() {
+        let { list } = this.refs;
+        list.addEventListener('scroll',()=>this.dropload());
 
     }
-
+    componentWillUnmount(){
+        let { list } = this.refs;
+        list.removeEventListener('scroll',this.dropload)
+    }
+    dropload(){
+        let { list } = this.refs;
+        let { droploadFlag } = this.props;
+        if(!droploadFlag){
+            if(list.scrollHeight - list.clientHeight - list.scrollTop <= 20){
+                this.props.getArticleList(this.state.pageIndex+1);
+                this.setState({
+                    pageIndex:this.state.pageIndex+1
+                })
+            }
+        }else{
+            list.removeEventListener('scroll',this.dropload)
+        }
+    }
     newArticle(){
         let obj = {
             title:'',
             content:''
         };
-        this.props.setValue('onEditId','');
+        this.props.dispatch(actions.editId(''));
         this.props.dispatch(actions.editArticle(obj));
     }
 
@@ -37,7 +58,7 @@ class ArticalList extends React.Component {
             title:data.title,
             content:data.content
         };
-        this.props.setValue('onEditId',data.art_id);
+        this.props.dispatch(actions.editId(data.art_id));
         this.props.dispatch(actions.editArticle(obj))
     }
 
@@ -50,8 +71,8 @@ class ArticalList extends React.Component {
             };
             http.ajax(params).then(res => {
                 if(res.success){
-                    this.props.getArticleList();
-                    this.props.setValue('onEditId','');//将“当前选中文章”的id设为空，这样直接点击发表文章按钮时，为新增文章。
+                    this.props.getArticleList(1);
+                    this.props.dispatch(actions.editId(''));//将“当前选中文章”的id设为空，这样直接点击发表文章按钮时，为新增文章。
                 }
                 alert(res.msg)
             }).catch((err)=>{
@@ -68,7 +89,7 @@ class ArticalList extends React.Component {
         };
         http.ajax(params).then(res => {
             if(res.success){
-                this.props.getArticleList();
+                this.props.getArticleList(1);
             }
             alert(res.msg)
         }).catch((err)=>{
@@ -85,7 +106,7 @@ class ArticalList extends React.Component {
         };
         http.ajax(params).then(res => {
             if(res.success){
-                this.props.getArticleList();
+                this.props.getArticleList(1);
             }
             alert(res.msg)
         }).catch((err)=>{
@@ -115,7 +136,7 @@ class ArticalList extends React.Component {
                                 {
                                     val.secret?
                                         <Button type="primary" onClick={()=>{this.secretArticle(val.art_id,true)}}>
-                                            <i className="iconfont icon-lockunlock"> </i>设为公开
+                                            <i className="iconfont icon-unlock"> </i>设为公开
                                         </Button>:
                                         <Button type="primary" onClick={()=>{this.secretArticle(val.art_id)}}>
                                             <i className="iconfont icon-cc-lock"> </i>设为私密
@@ -143,7 +164,7 @@ class ArticalList extends React.Component {
                                 {
                                     val.secret?
                                         <Button type="primary" onClick={()=>{this.secretArticle(val.art_id,true)}}>
-                                            <i className="iconfont icon-lockunlock"> </i>设为公开
+                                            <i className="iconfont icon-unlock"> </i>设为公开
                                         </Button>:
                                         <Button type="primary" onClick={()=>{this.secretArticle(val.art_id)}}>
                                             <i className="iconfont icon-cc-lock"> </i>设为私密
@@ -157,7 +178,7 @@ class ArticalList extends React.Component {
         }
 
         return (
-            <div className='ArticleList'>
+            <div className='ArticleList' ref="list">
                 <div className='newArticle' onClick={()=>{this.newArticle()}}>
                     <i className="iconfont icon-bianji">
                     </i>
@@ -174,7 +195,8 @@ class ArticalList extends React.Component {
 
 export default connect((state) => {
     return {
-        article: state.article
+        article: state.article,
+        onEditId: state.onEditId
     };
 })(ArticalList);
 

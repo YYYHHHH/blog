@@ -16,7 +16,7 @@ const http = {
         }
     },
     showError(msg){
-        console.log(msg);
+        alert(msg);
     },
     ajax(params) {
         params.headers = {'Content-Type': 'application/json'};

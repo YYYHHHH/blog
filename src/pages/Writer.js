@@ -16,32 +16,45 @@ class Writer extends React.Component {
     constructor() {
         super();
         this.state = {
-            onEditId:''
+            onEditId:'',
+            articleList:[],
+            pageSize:10,
+            droploadFlag:false
+
         };
         this.getArticleList = this.getArticleList.bind(this);
-        this.setValue = this.setValue.bind(this);
     }
 
     componentDidMount() {
-        this.getArticleList();
+        this.getArticleList(1);
     }
     setValue(name,value){
         this.setState({
             [name]:value
         })
     }
-    getArticleList(){
+    getArticleList(pageIndex){
         let params = {
             method: 'post',
             url: HOST+'/article/getList',
             data: {
-
+                pageIndex,
+                pageSize:this.state.pageSize
             },
         };
         http.ajax(params).then(res => {
-            this.setState({
-                articleList:res.data
-            })
+            if(res.success){
+                if(res.data&&res.data.length>0){
+                    let { articleList } = this.state;
+                    this.setState({
+                        articleList:articleList.concat(res.data)
+                    })
+                }else{
+                    this.setState({
+                        droploadFlag:true                    //说明已经没有更多可以加载的了
+                    })
+                }
+            }
         }).catch((err)=>{
             alert('error',err)
         })
@@ -51,14 +64,12 @@ class Writer extends React.Component {
             <div className='Writer'>
                 <div className="WriterL">
                     <ArticleList
+                        droploadFlag={this.state.droploadFlag}
                         articleList={this.state.articleList}
-                        onEditId={this.state.onEditId}
-                        setValue={this.setValue}
                         getArticleList={this.getArticleList}/>
                 </div>
                 <div className="WriterR">
                     <Editor
-                        onEditId={this.state.onEditId}
                         getArticleList={this.getArticleList}/>
                 </div>
             </div>
