@@ -35,7 +35,7 @@ class ArticalList extends React.Component {
         let { droploadFlag } = this.props;
         if(!droploadFlag){
             if(list.scrollHeight - list.clientHeight - list.scrollTop <= 20){
-                this.props.getArticleList(this.state.pageIndex+1);
+                this.props.getArticleList(this.state.pageIndex+1,true);
                 this.setState({
                     pageIndex:this.state.pageIndex+1
                 })

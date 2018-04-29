@@ -33,7 +33,7 @@ class Writer extends React.Component {
             [name]:value
         })
     }
-    getArticleList(pageIndex){
+    getArticleList(pageIndex,dropload = false){
         let params = {
             method: 'post',
             url: HOST+'/article/getList',
@@ -46,9 +46,15 @@ class Writer extends React.Component {
             if(res.success){
                 if(res.data&&res.data.length>0){
                     let { articleList } = this.state;
-                    this.setState({
-                        articleList:articleList.concat(res.data)
-                    })
+                    if(dropload){              //用于区分是下拉加载还是重新获取数据
+                        this.setState({
+                            articleList:articleList.concat(res.data)
+                        })
+                    }else{
+                        this.setState({
+                            articleList:res.data
+                        })
+                    }
                 }else{
                     this.setState({
                         droploadFlag:true                    //说明已经没有更多可以加载的了

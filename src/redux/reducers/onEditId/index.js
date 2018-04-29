@@ -1,11 +1,7 @@
 import * as actions from '../../actions/article';
 
 
-const initialState = {
-    id:''
-};
-
-export default function index(state = initialState, action = {} ) {
+export default function index(state = '', action = {} ) {
 
     switch (action.type) {
 
