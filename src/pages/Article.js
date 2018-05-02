@@ -22,7 +22,8 @@ class Article extends React.Component {
     }
 
     componentDidMount() {
-        this.getArticle(this.props.match.params.id)
+        this.getArticle(this.props.match.params.id);
+        this.getComments(this.props.match.params.id);
     }
 
     getArticle(art_id){
@@ -37,6 +38,24 @@ class Article extends React.Component {
             if(res.success){
                 this.setState({
                     data:res.data
+                })
+            }
+        }).catch((err)=>{
+            alert('error',err)
+        })
+    }
+    getComments(art_id){
+        let params = {
+            method: 'post',
+            url: HOST+'/comments/getComments',
+            data: {
+                art_id
+            },
+        };
+        http.ajax(params).then(res => {
+            if(res.success){
+                this.setState({
+                    comment:res.data
                 })
             }
         }).catch((err)=>{

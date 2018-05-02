@@ -76,11 +76,13 @@ class Blog extends React.Component {
         let blogList;
         if(this.state.articleList){
             blogList = this.state.articleList.map((val,index)=>{
-                return(
-                    <div className="BlogContentItem" key={index}>
-                        <Link to={`/article/${val.art_id}`}>{val.title}</Link>
-                    </div>
-                )
+                if(!val.secret){
+                    return(
+                        <div className="BlogContentItem" key={index}>
+                            <Link to={`/article/${val.art_id}`}>{val.title}</Link>
+                        </div>
+                    )
+                }
             })
         }
         return (
