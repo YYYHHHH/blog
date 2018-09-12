@@ -21,7 +21,7 @@ class About extends React.Component {
     render() {
         return (
             <div className='About'>
-                About
+                Abouta
             </div>
         );
     }
